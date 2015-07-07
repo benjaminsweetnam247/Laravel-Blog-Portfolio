@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: bens_portfolio
+        psr4_prefix: bens_portfolio
+        src_path: app
