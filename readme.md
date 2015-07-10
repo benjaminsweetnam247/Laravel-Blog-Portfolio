@@ -8,6 +8,7 @@ This is a Blog & Portfolio Gallery CMS built off the laravel framework
 * Create & View & Send Emails --not recieve
 * Create, View & Destory Messages
 * View Gallery
+
 ###To Do
 * Create, Store, View & Destroy Gallery Pictures
 * Add Pictures to Blog Articles
