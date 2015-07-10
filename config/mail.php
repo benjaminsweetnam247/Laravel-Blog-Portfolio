@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'bensport@bens-portfolio.com', 'name' => 'Benjamin Sweetnam'],
+    'from' => ['address' => 'SEND_ADDRESS', 'name' => 'SEND_NAME'],
 
     /*
     |--------------------------------------------------------------------------

@@ -11,7 +11,7 @@
 
     <div class="row text-center">
         <div class="col-lg-12">
-            <h2>Benjamin Orion Sweetnam</h2>
+            <h2>Your Name</h2>
         </div>
     </div>
 
