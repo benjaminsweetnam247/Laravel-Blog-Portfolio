@@ -1,2 +1,195 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+//--------
+// Imports
+//--------
+@import "susy";
+@import "normalize";
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700|Noto+Serif:400,700,400italic);
+
+//---------
+// Includes 
+//---------
+
+@include border-box-sizing;
+
+//----------
+// Variables
+//----------
+$serif: (
+        font-family: 'Noto Serif'
+);
+
+$sans: (
+        font-family: 'Noto Sans'
+);
+//---------------
+// Sussy Defaults
+//---------------
+$susy: (
+        columns: 4,
+        container: 1140px,
+  //	debug: (image: show),
+        global-box-sizing: border-box
+);
+
+//--------
+// Wrapper
+//--------
+.wrap {
+  @include container(80%);
+  height: 100vh;
+}
+
+//--------
+//  Header
+//--------
+header {
+  @include span(4 of 4);
+  text-align: center;
+}
+
+//-----------
+// Navigation
+//-----------
+nav {
+  @include span(6 of 6);
+}
+nav  li {
+  @include gallery(1 of 4);
+  list-style: none;
+  text-align: center;
+
+}
+
+nav  li  a {
+  color: #000;
+  text-decoration: none;
+}
+
+//--------------
+// Content(Main)
+//--------------
+main {
+  @include span(3 of 4);
+  min-height: 67%;
+  h2 {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+//--------------
+// Image Gallery
+//--------------
+.gallery {
+  @include container;
+}
+
+.gallery .gallery-item {
+  @include gallery(1 of 3);
+}
+.gallery img {
+  max-width: 100%;
+  height: auto;
+}
+
+//--------
+// Sidebar
+//--------
+aside {
+  @include span(1 of 4 last);
+  #links-header {
+    text-align: center;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: black;
+    text-decoration: none;
+    li {
+      text-align: center;
+      font-size: 1em;
+      padding-top: 10px;
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+}
+//-----
+// Form
+//-----
+form{
+  @include container(80%);
+  .form-group{
+    min-height: 30px;
+  }
+  label {
+    @include span(2 of 6);
+    text-align: right;
+  }
+  input {
+    @include span(4 of 6 last);
+  }
+  input[type="text-areaa"] {
+    height: 300px;
+  }
+}
+//---------
+// About Me
+//---------
+.portfolio{
+  @include container();
+  .blurb {
+    @include span(1 of 1);
+  }
+  .study{
+    @include span(1 of 3);
+  }
+  .work {
+    @include span(1 of 3);
+  }
+  .hobbies {
+    @include span(1 of 3 last);
+  }
+}
+//---------
+// Portrait 
+//---------
+.portrait {
+  @include container(200px);
+}
+//------
+// Study
+//------
+
+//-----
+// Work
+//-----
+
+//--------
+// Hobbies
+//--------
+
+//-------
+// Footer
+//-------
+footer {
+  @include span(1 of 1);
+  .contact-details {
+    @include span(6 of 9);
+    p{
+      margin: 0;
+      padding: 0;
+      line-height: 20px;
+    }
+  }
+  .middel{
+    @include span(3 of 9);
+  }
+  .right{
+    @include span(3 of 9 last);
+  }
+}
 
