@@ -12,12 +12,9 @@
 
     <main>
         <div class="page-title">
-            <h2>Page title</h2>
+            @yield('page-title')
         </div>
-        <article>
-            <h3>Article title</h3>
-            <p>Article Body Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
-        </article>
+    @yield('main')
     </main>
     @include('partials._sidebar')
     @include('partials._footer')

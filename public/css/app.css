@@ -421,6 +421,9 @@ main {
     width: 100%;
     text-align: center; }
 
+article.single {
+  text-align: center; }
+
 .gallery {
   max-width: 1140px;
   margin-left: auto;
@@ -448,8 +451,17 @@ main {
     clear: none; }
 
 .gallery img {
-  max-width: 100%;
-  height: auto; }
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out; }
+
+.gallery img:hover {
+  filter: grayscale(0%);
+  -webkit-filter: grayscale(0%); }
 
 aside {
   width: 21.05263%;
@@ -541,7 +553,7 @@ footer {
       margin: 0;
       padding: 0;
       line-height: 20px; }
-  footer .middel {
+  footer .middle {
     width: 31.81818%;
     float: left;
     margin-right: 2.27273%; }

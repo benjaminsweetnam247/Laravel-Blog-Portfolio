@@ -13,6 +13,7 @@ class Images extends Model
                       'description',
                           'gallery',
                          'filename',
+                            'image',
                         'extension'];
 }
 

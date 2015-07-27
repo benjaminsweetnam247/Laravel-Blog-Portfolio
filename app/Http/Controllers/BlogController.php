@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
-use Illuminate\Http\Request;
+//require 'vendor/autoload.php';
 
-use App\Http\Requests;
+use App\Article;
+//use Illuminate\Http\Request;
+use App\Images;
+use Illuminate\Support\Facades\Input;
+use Request;
+use Intervention\Image\ImageManager;
+//use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class BlogController extends Controller
@@ -18,6 +23,7 @@ class BlogController extends Controller
     public function index()
     {
         $articles = Article::all();
+
 
         return view('blog.index', compact('articles'));
     }
@@ -38,9 +44,19 @@ class BlogController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $article = new Article();
+        $article->title = Input::get('title');
+        $article->description = Input::get('description');
+        if (Input::hasFile('image')) {
+            $file = Input::file('image');
+            $name = time().'-'.$file->getClientOriginalName();
+            $file->move(public_path().'/images/', $name);
+            $article->thumbnail = $name;
+        }
+        $article->save();
+        return redirect('/blog/');
     }
 
     /**
@@ -51,7 +67,9 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        return view('blog.show');
+        $article = Article::findOrFail($id);
+
+        return view('blog.show', compact('article'));
     }
 
     /**

@@ -76,6 +76,14 @@ main {
     text-align: center;
   }
 }
+//--------
+// Article
+//--------
+
+article.single {
+  text-align: center;
+}
+
 
 //--------------
 // Image Gallery
@@ -88,10 +96,18 @@ main {
   @include gallery(1 of 3);
 }
 .gallery img {
-  max-width: 100%;
-  height: auto;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
 }
-
+.gallery img:hover {
+  filter: grayscale(0%);
+  -webkit-filter: grayscale(0%);
+}
 //--------
 // Sidebar
 //--------
@@ -185,7 +201,7 @@ footer {
       line-height: 20px;
     }
   }
-  .middel{
+  .middle{
     @include span(3 of 9);
   }
   .right{
