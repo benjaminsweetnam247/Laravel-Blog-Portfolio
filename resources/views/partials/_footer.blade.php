@@ -1,14 +1,11 @@
 <footer>
-    <div class="contact-details">
+    <div>
         <p>Benjamin Sweetnam</p>
-        <p>Mobile: 0432881378</p>
-        <p>Home: 0294499775</p>
-        <p>email: ben_s247@optusnet.com.au</p>
     </div>
-    <div class="middle">
-
+    <div>
+        <p>email: benjaminosATbens-portfolio.com</p>
     </div>
-    <div class="right">
-
+    <div>
+        <p>&copy;Benjamin Orion Sweetnam</p>
     </div>
 </footer>

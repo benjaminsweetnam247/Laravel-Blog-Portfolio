@@ -15,6 +15,9 @@ use Request;
 
 class GalleryController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -44,13 +47,6 @@ class GalleryController extends Controller
      * @return Response
      */
     public function store(){
-
-//                            'title',
-//                      'description',
-//                          'gallery',
-//                         'filename',
-//                            'image',
-//                        'extension'];
         if(Input::hasFile('image')){
               $data = new Images();
               $data->title = Input::get('title');
@@ -59,48 +55,21 @@ class GalleryController extends Controller
               $data->gallery = 1;
               $data->save();
               $path = public_path().'/images/';
-
-              $image = Image::make(Input::file('image'));
-              $image->resize(null, 600, function($constraint) {
+              $image = Image::make(Input::file('image'))
+              ->resize(null, 600, function($constraint) {
                                 $constraint->aspectRatio();
                                 $constraint->upsize();
-              })->save($path . $data->image);
-              $image->resize(200, 200, function($constraint) {
-                                $constraint->aspectRatio();
-                                $constraint->upsize();
-                            });
-              $image->save($path . 'thumb-' . $data->image);
-              $image->greyscale()->save($path . 'grey-' . $data->image);
+              });
+            if(!file_exists($path . $data->image)){
+              $image->save($path . $data->image)
+                  ->resize(200, 200, function($constraint) {
+                  $constraint->aspectRatio();
+                  $constraint->upsize();
+              })->save($path . 'thumb-' . $data->image);
+            }};
+        \Session::flash('flash_message', 'Image Added To the Gallery');
+        return redirect('/gallery');
 
-
-            return redirect('/gallery');
-//              $gallery = Image::make($input)->resize(null, 600, function($constraint) {
-//                  $constraint->aspectRatio();
-//                  $constraint-> upsize();
-//              });
-
-//
-//            $image = Input::file('image');
-//            $filename = time().'.'.$image->getClientOriginalExtension();
-//
-//            $path = public_path('images/'.$filename);
-//
-//            Image::make($image->getRealPath())->resize(200, 200)->save($path);
-//            return $image;
-
-        }
-
-
-//        $image = new Images();
-//        $image->title = Input::get('title');
-//        $image->description = Input::get('description');
-//        if (Input::hasFile('image')) {
-//            $file = Input::file('image');
-//            $name = time().'-'.$file->getClientOriginalName();
-//            $file->move(public_path().'/images/', $name);
-//            $image->thumbnail = $name;
-//        }
-//        $image->save();
     }
 
     /**
@@ -112,6 +81,7 @@ class GalleryController extends Controller
     public function show($id)
     {
         $image = Images::find($id);
+
         return view('gallery.show', compact('image'));
     }
 
@@ -136,6 +106,8 @@ class GalleryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        \Session::flash('flash_message', 'Image Edited');
+
     }
 
     /**
@@ -147,5 +119,6 @@ class GalleryController extends Controller
     public function destroy($id)
     {
         //
+        \Session::flash('flash_message', 'Image Removed');
     }
 }

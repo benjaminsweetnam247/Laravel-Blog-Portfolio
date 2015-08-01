@@ -4,7 +4,7 @@
 @import "susy";
 @import "normalize";
 @import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700|Noto+Serif:400,700,400italic);
-
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
 //---------
 // Includes 
 //---------
@@ -21,6 +21,11 @@ $serif: (
 $sans: (
         font-family: 'Noto Sans'
 );
+$black: #323232;
+$white: #FFF;
+$blue: #008fff;
+$table: #dddddd;
+$table-alt: #999999;
 //---------------
 // Sussy Defaults
 //---------------
@@ -45,6 +50,11 @@ $susy: (
 header {
   @include span(4 of 4);
   text-align: center;
+  background-color: $black;
+  color: $white;
+  p{
+    color: $blue;
+  }
 }
 
 //-----------
@@ -52,23 +62,69 @@ header {
 //-----------
 nav {
   @include span(6 of 6);
+  padding-top: 20px;
+  background-color: $black;
+  a:before {
+    font-family: FontAwesome;
+  }
+  a[href="/"]:before{content: "\f015";}
+  a[href="/about"]:before{content:"\f007";}
+  a[href="/gallery"]:before{content:"\f03e";}
+  a[href="/contact/create"]:before{content:"\f003";}
+  a[href="/contact"]:before{content:"\f003";}
+  a[href="/blog/create"]:before{content: "\f044";}
+  a[href="/gallery/create"]:before{content: "\f1c5";}
+  a[href="/auth/login"]:before{content:"\f023";}
+  a[href="/auth/logout"]:before{content:"\f09c";}
+  a[href="/auth/register"]:before{content: "\f234;";}
 }
-nav  li {
-  @include gallery(1 of 4);
+nav.normal  li {
+  @include gallery(1 of 5);
   list-style: none;
   text-align: center;
-
+  :hover {
+    color: $blue;
+  }
+}
+nav.admin  li {
+  @include gallery(1 of 7);
+  list-style: none;
+  text-align: center;
+  :hover {
+    color: $blue;
+  }
 }
 
 nav  li  a {
-  color: #000;
+  color: $white;
   text-decoration: none;
+
+}
+//--------------
+// Flash Message
+//--------------
+.flash_message {
+  @include container();
+  background-color: #008fff;
+  h3{
+    @include span(12 of 12);
+    text-align:center;
+  }
 }
 
 //--------------
 // Content(Main)
 //--------------
 main {
+  a:visited{
+    color: $black;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: #008fff;
+  }
   @include span(3 of 4);
   min-height: 67%;
   h2 {
@@ -84,16 +140,62 @@ article.single {
   text-align: center;
 }
 
+//--------
+// Welcome
+//--------
+
+.welcome {
+  text-align: center;
+}
+//------
+// Blog
+//------
+.blog {
+  article {
+    display: block;
+    h3 {
+      padding-top: 40px;
+      @include span(1 of 1);
+      text-align: center;
+    }
+    img{
+      @include span(2 of 6);
+    }
+    p{
+      @include span(4 of 6 last);
+
+    }
+    :first-child {
+      margin-top: 0px;
+    }
+    :last-child {
+      margin-bottom: 100px;
+    }
+  }
+}
 
 //--------------
 // Image Gallery
 //--------------
 .gallery {
   @include container;
+  a{
+    text-decoration: none;
+    color: black;
+    :hover {
+      color: rgba(0, 143, 255, 0.31);
+    }
+  }
 }
 
 .gallery .gallery-item {
   @include gallery(1 of 3);
+  h3 {
+    height: 2em;
+  }
+  img {
+   max-height: 100px;
+  }
 }
 .gallery img {
   filter: grayscale(100%);
@@ -133,12 +235,39 @@ aside {
     }
   }
 }
+//--------------
+// Sidebar Links
+//--------------
+aside {
+  a:before {
+    font-family: FontAwesome;
+  }
+  //Github
+  a[href="http://github.com/benjaminsweetnam247/"]:before {content:"\f1d3";}
+  //LinkedIn
+  a[href="http://www.linkedin.com/in/benjaminsweetnam"]:before {content:"\f08c";}
+  //Twitter
+  a[href="http://twitter.com/ben_s247"]:before {content:"\f099";}
+  //Deviantart
+  a[href="http://benosweetnam.deviantart.com"]:before {content:"\f1bd";}
+}
+
+
+
+
 //-----
 // Form
 //-----
+
+.auth-form{
+  width: 100%;
+  margin: 0 auto;
+}
 form{
   @include container(80%);
-  .form-group{
+  margin: 0;
+  padding: 0;
+  div{
     min-height: 30px;
   }
   label {
@@ -148,64 +277,112 @@ form{
   input {
     @include span(4 of 6 last);
   }
-  input[type="text-areaa"] {
-    height: 300px;
-  }
+
 }
+
+
 //---------
 // About Me
 //---------
 .portfolio{
-  @include container();
+
+    @include container();
   .blurb {
-    @include span(1 of 1);
+    @include container();
   }
-  .study{
-    @include span(1 of 3);
+  .study {
+    @include container();
   }
   .work {
-    @include span(1 of 3);
+    @include container();
   }
+
+  h4 {
+    font-size: 1.4em;
+    text-align: center;
+    color: #008fff
+  }
+  .blurb {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  //------
+  // Study
+  //------
+  .study{
+    tr {
+      @include span(1 of 1);
+      padding-top: 10px;
+
+      th,
+      td {
+        text-align: center;
+        @include gallery(1 of 3);
+      }
+
+    }
+  }
+//  //-----
+//  // Work
+//  //-----
+  .work {
+      tr {
+        @include span(1 of 1);
+        padding-top: 30px;
+        th,
+        td {
+          text-align: center;
+          @include gallery(1 of 4);
+        }
+      }
+    }
+  //--------
+  // Hobbies
+  //--------
   .hobbies {
-    @include span(1 of 3 last);
+     ul {
+       font-weight: bold;
+       margin-left: 0;
+       padding-left: 0;
+       @include span(1 of 1);
+       list-style: none;
+       :before {
+         content: " ";
+       }
+     }
+
+     li {
+       @include gallery(1 of 4);
+       padding-top: 15px;
+     }
+
   }
 }
+
 //---------
 // Portrait 
 //---------
 .portrait {
   @include container(200px);
 }
-//------
-// Study
-//------
 
-//-----
-// Work
-//-----
+.portrait>img {
+  border-radius: 200px;
+}
 
-//--------
-// Hobbies
-//--------
+
+
 
 //-------
 // Footer
 //-------
 footer {
+  div {
+    @include gallery(2 of 6);
+  }
+  padding: 20px 15px;
+  background-color: $black;
+  color: $white;
   @include span(1 of 1);
-  .contact-details {
-    @include span(6 of 9);
-    p{
-      margin: 0;
-      padding: 0;
-      line-height: 20px;
-    }
-  }
-  .middle{
-    @include span(3 of 9);
-  }
-  .right{
-    @include span(3 of 9 last);
-  }
 }
 

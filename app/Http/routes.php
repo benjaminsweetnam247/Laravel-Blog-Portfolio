@@ -11,9 +11,15 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use Intervention\Image\Facades\Image;
+
 Route::get('/', function(){
     return redirect('/blog');
 });
+Route::get('/home', function(){
+    return redirect('/blog');
+});
+
 Route::resource('/blog', 'BlogController');
 
 Route::get('/about', function() {
@@ -22,12 +28,18 @@ Route::get('/about', function() {
 
 Route::resource('/gallery', 'GalleryController');
 
-Route::get('/contact',function() {
-    return view('contact.create');
-});
+Route::resource('/contact', 'MailController');
 
-Route::get('/test', function() {
-   $img = Image::make(url('http://www.planwallpaper.com/static/images/desktop-year-of-the-tiger-images-wallpaper.jpg'))->resize(300, 200);
+Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-    return $img->response('jpg');
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
+
+Route::get('*', function() {
+    return redirect('/');
 });

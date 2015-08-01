@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Message;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -9,6 +10,11 @@ use App\Http\Controllers\Controller;
 
 class MailController extends Controller
 {
+
+    public function __contstruct()
+    {
+        $this->middleware('auth', ['except' => ['create']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,9 @@ class MailController extends Controller
      */
     public function index()
     {
-        //
+        $messages = Message::all();
+        
+        return view('contact.index', compact($messages));
     }
 
     /**
@@ -26,7 +34,7 @@ class MailController extends Controller
      */
     public function create()
     {
-        //
+        return view('contact.create');
     }
 
     /**
@@ -37,7 +45,14 @@ class MailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $mail = new Message();
+        $mail->sender = $request->name;
+        $mail->email = $request->email;
+        $mail->subject = $request->subject;
+        $mail->message = $request->message;
+        $mail->save();
+        \Session::flash('flash_message', 'Message Sent');
+        return redirect('contact.create');
     }
 
     /**
@@ -48,7 +63,7 @@ class MailController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -82,6 +97,6 @@ class MailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \Session::flash('flash_message', 'Message Deleted');
     }
 }

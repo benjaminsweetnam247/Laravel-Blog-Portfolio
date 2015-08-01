@@ -5,7 +5,7 @@
 @endsection
 
 @section('main')
-    {!! Form::open(array('url' => 'contact')) !!}
+    {!! Form::open(array( route('contact.index'), 'method'=>'POST')) !!}
     <div>
         {!! Form::label('name', 'Name:') !!}
         {!! Form::text('name') !!}
@@ -15,9 +15,14 @@
         {!! Form::email('email') !!}
     </div>
     <div>
-        {!! Form::label('message', 'Your Message:') !!}
-        {!! Form::textarea('message') !!}
+        {!! Form::label('subject', 'Subject:') !!}
+        {!! Form::text('subject') !!}
     </div>
+    <div>
+        {!! Form::label('message', 'Your Message:') !!}<br>
+        {!! Form::text('message') !!}
+    </div>
+        {!! Form::submit('Submit') !!}
 
     {!! Form::close() !!}
 @endsection

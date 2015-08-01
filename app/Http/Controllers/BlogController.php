@@ -6,15 +6,20 @@ namespace App\Http\Controllers;
 
 use App\Article;
 //use Illuminate\Http\Request;
+use App\Http\Requests\ArticleRequest;
 use App\Images;
 use Illuminate\Support\Facades\Input;
-use Request;
+//use Request;
 use Intervention\Image\ImageManager;
 //use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
 
 class BlogController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -44,11 +49,10 @@ class BlogController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store()
+    public function store(ArticleRequest $request)
     {
-        $article = new Article();
-        $article->title = Input::get('title');
-        $article->description = Input::get('description');
+
+        $article = new Article($request->all());
         if (Input::hasFile('image')) {
             $file = Input::file('image');
             $name = time().'-'.$file->getClientOriginalName();
@@ -56,6 +60,7 @@ class BlogController extends Controller
             $article->thumbnail = $name;
         }
         $article->save();
+        \Session::flash('flash_message', 'Article Created');
         return redirect('/blog/');
     }
 
@@ -65,10 +70,8 @@ class BlogController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        $article = Article::findOrFail($id);
-
         return view('blog.show', compact('article'));
     }
 
@@ -78,9 +81,9 @@ class BlogController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        //
+        return view('blog.edit', compact('article'));
     }
 
     /**
@@ -90,9 +93,12 @@ class BlogController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update($id, ArticleRequest $request)
     {
-        //
+        $article = Article::get($id);
+        $article->update($request->all());
+        \Session::flash('flash_message', 'Article Edited');
+        return redirect('blog.index');
     }
 
     /**
@@ -104,5 +110,7 @@ class BlogController extends Controller
     public function destroy($id)
     {
         //
+        \Session::flash('flash_message', 'Article Removed');
+
     }
 }

@@ -4,6 +4,10 @@
     <h2>Create Gallery Image</h2>
 
 
+
+@endsection
+
+@section('main')
     {!! Form::open(array('action'=>'GalleryController@store','method'=>'POST','files'=>true)) !!}
     <div>
         {!! Form::label('image', 'Upload Image:') !!}

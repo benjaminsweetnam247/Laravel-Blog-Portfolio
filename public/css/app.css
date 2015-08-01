@@ -5,6 +5,7 @@
  *    user zoom.
  */
 @import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700|Noto+Serif:400,700,400italic);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
 html {
   font-family: sans-serif;
   /* 1 */
@@ -377,52 +378,171 @@ header {
   float: left;
   margin-left: 0;
   margin-right: 0;
-  text-align: center; }
+  text-align: center;
+  background-color: #323232;
+  color: #FFF; }
+  header p {
+    color: #008fff; }
 
 nav {
   width: 100%;
   float: left;
   margin-left: 0;
-  margin-right: 0; }
+  margin-right: 0;
+  padding-top: 20px;
+  background-color: #323232; }
+  nav a:before {
+    font-family: FontAwesome; }
+  nav a[href="/"]:before {
+    content: "\f015"; }
+  nav a[href="/about"]:before {
+    content: "\f007"; }
+  nav a[href="/gallery"]:before {
+    content: "\f03e"; }
+  nav a[href="/contact/create"]:before {
+    content: "\f003"; }
+  nav a[href="/contact"]:before {
+    content: "\f003"; }
+  nav a[href="/blog/create"]:before {
+    content: "\f044"; }
+  nav a[href="/gallery/create"]:before {
+    content: "\f1c5"; }
+  nav a[href="/auth/login"]:before {
+    content: "\f023"; }
+  nav a[href="/auth/logout"]:before {
+    content: "\f09c"; }
+  nav a[href="/auth/register"]:before {
+    content: "\f234;"; }
 
-nav li {
-  width: 21.05263%;
+nav.normal li {
+  width: 16.66667%;
   float: left;
   list-style: none;
   text-align: center; }
-  nav li:nth-child(4n + 1) {
+  nav.normal li:nth-child(5n + 1) {
     margin-left: 0;
     margin-right: -100%;
     clear: both;
     margin-left: 0; }
-  nav li:nth-child(4n + 2) {
-    margin-left: 26.31579%;
+  nav.normal li:nth-child(5n + 2) {
+    margin-left: 20.83333%;
     margin-right: -100%;
     clear: none; }
-  nav li:nth-child(4n + 3) {
-    margin-left: 52.63158%;
+  nav.normal li:nth-child(5n + 3) {
+    margin-left: 41.66667%;
     margin-right: -100%;
     clear: none; }
-  nav li:nth-child(4n + 4) {
-    margin-left: 78.94737%;
+  nav.normal li:nth-child(5n + 4) {
+    margin-left: 62.5%;
     margin-right: -100%;
     clear: none; }
+  nav.normal li:nth-child(5n + 5) {
+    margin-left: 83.33333%;
+    margin-right: -100%;
+    clear: none; }
+  nav.normal li :hover {
+    color: #008fff; }
+
+nav.admin li {
+  width: 11.76471%;
+  float: left;
+  list-style: none;
+  text-align: center; }
+  nav.admin li:nth-child(7n + 1) {
+    margin-left: 0;
+    margin-right: -100%;
+    clear: both;
+    margin-left: 0; }
+  nav.admin li:nth-child(7n + 2) {
+    margin-left: 14.70588%;
+    margin-right: -100%;
+    clear: none; }
+  nav.admin li:nth-child(7n + 3) {
+    margin-left: 29.41176%;
+    margin-right: -100%;
+    clear: none; }
+  nav.admin li:nth-child(7n + 4) {
+    margin-left: 44.11765%;
+    margin-right: -100%;
+    clear: none; }
+  nav.admin li:nth-child(7n + 5) {
+    margin-left: 58.82353%;
+    margin-right: -100%;
+    clear: none; }
+  nav.admin li:nth-child(7n + 6) {
+    margin-left: 73.52941%;
+    margin-right: -100%;
+    clear: none; }
+  nav.admin li:nth-child(7n + 7) {
+    margin-left: 88.23529%;
+    margin-right: -100%;
+    clear: none; }
+  nav.admin li :hover {
+    color: #008fff; }
 
 nav li a {
-  color: #000;
+  color: #FFF;
   text-decoration: none; }
+
+.flash_message {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #008fff; }
+  .flash_message:after {
+    content: " ";
+    display: block;
+    clear: both; }
+  .flash_message h3 {
+    width: 100%;
+    float: left;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center; }
 
 main {
   width: 73.68421%;
   float: left;
   margin-right: 5.26316%;
   min-height: 67%; }
+  main a:visited {
+    color: #323232; }
+  main h1,
+  main h2,
+  main h3,
+  main h4 {
+    color: #008fff; }
   main h2 {
     width: 100%;
     text-align: center; }
 
 article.single {
   text-align: center; }
+
+.welcome {
+  text-align: center; }
+
+.blog article {
+  display: block; }
+  .blog article h3 {
+    padding-top: 40px;
+    width: 100%;
+    float: left;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center; }
+  .blog article img {
+    width: 31.03448%;
+    float: left;
+    margin-right: 3.44828%; }
+  .blog article p {
+    width: 65.51724%;
+    float: right;
+    margin-right: 0; }
+  .blog article :first-child {
+    margin-top: 0px; }
+  .blog article :last-child {
+    margin-bottom: 100px; }
 
 .gallery {
   max-width: 1140px;
@@ -432,6 +552,11 @@ article.single {
     content: " ";
     display: block;
     clear: both; }
+  .gallery a {
+    text-decoration: none;
+    color: black; }
+    .gallery a :hover {
+      color: rgba(0, 143, 255, 0.31); }
 
 .gallery .gallery-item {
   width: 28.57143%;
@@ -449,6 +574,10 @@ article.single {
     margin-left: 71.42857%;
     margin-right: -100%;
     clear: none; }
+  .gallery .gallery-item h3 {
+    height: 2em; }
+  .gallery .gallery-item img {
+    max-height: 100px; }
 
 .gallery img {
   filter: grayscale(100%);
@@ -483,15 +612,32 @@ aside {
         text-decoration: none;
         color: black; }
 
+aside a:before {
+  font-family: FontAwesome; }
+aside a[href="http://github.com/benjaminsweetnam247/"]:before {
+  content: "\f1d3"; }
+aside a[href="http://www.linkedin.com/in/benjaminsweetnam"]:before {
+  content: "\f08c"; }
+aside a[href="http://twitter.com/ben_s247"]:before {
+  content: "\f099"; }
+aside a[href="http://benosweetnam.deviantart.com"]:before {
+  content: "\f1bd"; }
+
+.auth-form {
+  width: 100%;
+  margin: 0 auto; }
+
 form {
   max-width: 80%;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  margin: 0;
+  padding: 0; }
   form:after {
     content: " ";
     display: block;
     clear: both; }
-  form .form-group {
+  form div {
     min-height: 30px; }
   form label {
     width: 31.03448%;
@@ -502,8 +648,6 @@ form {
     width: 65.51724%;
     float: right;
     margin-right: 0; }
-  form input[type="text-areaa"] {
-    height: 300px; }
 
 .portfolio {
   max-width: 1140px;
@@ -514,22 +658,127 @@ form {
     display: block;
     clear: both; }
   .portfolio .blurb {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto; }
+    .portfolio .blurb:after {
+      content: " ";
+      display: block;
+      clear: both; }
+  .portfolio .study {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto; }
+    .portfolio .study:after {
+      content: " ";
+      display: block;
+      clear: both; }
+  .portfolio .work {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto; }
+    .portfolio .work:after {
+      content: " ";
+      display: block;
+      clear: both; }
+  .portfolio h4 {
+    font-size: 1.4em;
+    text-align: center;
+    color: #008fff; }
+  .portfolio .blurb {
+    margin-top: 20px;
+    margin-bottom: 20px; }
+  .portfolio .study tr {
     width: 100%;
     float: left;
     margin-left: 0;
-    margin-right: 0; }
-  .portfolio .study {
-    width: 28.57143%;
+    margin-right: 0;
+    padding-top: 10px; }
+    .portfolio .study tr th,
+    .portfolio .study tr td {
+      text-align: center;
+      width: 28.57143%;
+      float: left; }
+      .portfolio .study tr th:nth-child(3n + 1),
+      .portfolio .study tr td:nth-child(3n + 1) {
+        margin-left: 0;
+        margin-right: -100%;
+        clear: both;
+        margin-left: 0; }
+      .portfolio .study tr th:nth-child(3n + 2),
+      .portfolio .study tr td:nth-child(3n + 2) {
+        margin-left: 35.71429%;
+        margin-right: -100%;
+        clear: none; }
+      .portfolio .study tr th:nth-child(3n + 3),
+      .portfolio .study tr td:nth-child(3n + 3) {
+        margin-left: 71.42857%;
+        margin-right: -100%;
+        clear: none; }
+  .portfolio .work tr {
+    width: 100%;
     float: left;
-    margin-right: 7.14286%; }
-  .portfolio .work {
-    width: 28.57143%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 30px; }
+    .portfolio .work tr th,
+    .portfolio .work tr td {
+      text-align: center;
+      width: 21.05263%;
+      float: left; }
+      .portfolio .work tr th:nth-child(4n + 1),
+      .portfolio .work tr td:nth-child(4n + 1) {
+        margin-left: 0;
+        margin-right: -100%;
+        clear: both;
+        margin-left: 0; }
+      .portfolio .work tr th:nth-child(4n + 2),
+      .portfolio .work tr td:nth-child(4n + 2) {
+        margin-left: 26.31579%;
+        margin-right: -100%;
+        clear: none; }
+      .portfolio .work tr th:nth-child(4n + 3),
+      .portfolio .work tr td:nth-child(4n + 3) {
+        margin-left: 52.63158%;
+        margin-right: -100%;
+        clear: none; }
+      .portfolio .work tr th:nth-child(4n + 4),
+      .portfolio .work tr td:nth-child(4n + 4) {
+        margin-left: 78.94737%;
+        margin-right: -100%;
+        clear: none; }
+  .portfolio .hobbies ul {
+    font-weight: bold;
+    margin-left: 0;
+    padding-left: 0;
+    width: 100%;
     float: left;
-    margin-right: 7.14286%; }
-  .portfolio .hobbies {
-    width: 28.57143%;
-    float: right;
-    margin-right: 0; }
+    margin-left: 0;
+    margin-right: 0;
+    list-style: none; }
+    .portfolio .hobbies ul :before {
+      content: " "; }
+  .portfolio .hobbies li {
+    width: 21.05263%;
+    float: left;
+    padding-top: 15px; }
+    .portfolio .hobbies li:nth-child(4n + 1) {
+      margin-left: 0;
+      margin-right: -100%;
+      clear: both;
+      margin-left: 0; }
+    .portfolio .hobbies li:nth-child(4n + 2) {
+      margin-left: 26.31579%;
+      margin-right: -100%;
+      clear: none; }
+    .portfolio .hobbies li:nth-child(4n + 3) {
+      margin-left: 52.63158%;
+      margin-right: -100%;
+      clear: none; }
+    .portfolio .hobbies li:nth-child(4n + 4) {
+      margin-left: 78.94737%;
+      margin-right: -100%;
+      clear: none; }
 
 .portrait {
   max-width: 200px;
@@ -540,26 +789,32 @@ form {
     display: block;
     clear: both; }
 
+.portrait > img {
+  border-radius: 200px; }
+
 footer {
+  padding: 20px 15px;
+  background-color: #323232;
+  color: #FFF;
   width: 100%;
   float: left;
   margin-left: 0;
   margin-right: 0; }
-  footer .contact-details {
-    width: 65.90909%;
-    float: left;
-    margin-right: 2.27273%; }
-    footer .contact-details p {
-      margin: 0;
-      padding: 0;
-      line-height: 20px; }
-  footer .middle {
-    width: 31.81818%;
-    float: left;
-    margin-right: 2.27273%; }
-  footer .right {
-    width: 31.81818%;
-    float: right;
-    margin-right: 0; }
+  footer div {
+    width: 31.03448%;
+    float: left; }
+    footer div:nth-child(3n + 1) {
+      margin-left: 0;
+      margin-right: -100%;
+      clear: both;
+      margin-left: 0; }
+    footer div:nth-child(3n + 2) {
+      margin-left: 34.48276%;
+      margin-right: -100%;
+      clear: none; }
+    footer div:nth-child(3n + 3) {
+      margin-left: 68.96552%;
+      margin-right: -100%;
+      clear: none; }
 
 /*# sourceMappingURL=app.css.map */
